@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Start Mobile | Indústria 4.0 · NFC · MQTT · ERP · Apps Nativos & Híbridos</title>
+    <!-- Google Fonts & Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fafcff;
+            color: #1a2c3e;
+            scroll-behavior: smooth;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        /* Header */
+        header {
+            background: #ffffff;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.02), 0 2px 6px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(2px);
+            background-color: rgba(255,255,255,0.96);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        .logo h1 {
+            font-size: 1.9rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #0B2B40, #1E6F5C);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        .logo span {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #2c7a64;
+            display: block;
+            letter-spacing: 0;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 36px;
+            list-style: none;
+        }
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 600;
+            color: #1f3b4a;
+            transition: 0.2s;
+            font-size: 1rem;
+        }
+        .nav-links a:hover {
+            color: #1E6F5C;
+        }
+        .btn-contato-nav {
+            background: #1E6F5C;
+            color: white !important;
+            padding: 8px 22px;
+            border-radius: 40px;
+            transition: 0.2s;
+        }
+        .btn-contato-nav:hover {
+            background: #0e4d3e;
+            transform: scale(1.02);
+        }
+
+        /* Hero */
+        .hero {
+            padding: 80px 0 60px;
+            background: linear-gradient(120deg, #ffffff 0%, #f0f7f4 100%);
+        }
+        .hero-grid {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+        .hero-content {
+            flex: 1;
+        }
+        .hero-badge {
+            background: #e0f2e9;
+            color: #1E6F5C;
+            display: inline-block;
+            padding: 6px 16px;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+        }
+        .hero-content h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            color: #0b2b2b;
+        }
+        .hero-content p {
+            font-size: 1.2rem;
+            color: #2c4b5e;
+            margin-bottom: 32px;
+            max-width: 600px;
+        }
+        .btn-group {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .btn-primary {
+            background: #1E6F5C;
+            color: white;
+            border: none;
+            padding: 14px 32px;
+            border-radius: 48px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        }
+        .btn-primary:hover {
+            background: #0c5a48;
+            transform: translateY(-2px);
+        }
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #1E6F5C;
+            color: #1E6F5C;
+            padding: 12px 30px;
+            border-radius: 48px;
+            font-weight: 700;
+            transition: 0.2s;
+            text-decoration: none;
+        }
+        .btn-outline:hover {
+            background: #1E6F5C10;
+            transform: translateY(-2px);
+        }
+        .hero-image img {
+            max-width: 100%;
+            width: 340px;
+            filter: drop-shadow(0 15px 25px rgba(0,0,0,0.05));
+        }
+
+        /* Seções */
+        .section {
+            padding: 80px 0;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2.3rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            color: #0a2c2c;
+        }
+        .section-sub {
+            text-align: center;
+            max-width: 720px;
+            margin: 0 auto 56px;
+            color: #4a6a7c;
+            font-size: 1.1rem;
+        }
+        .cards-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 32px;
+            justify-content: center;
+        }
+        .card {
+            background: white;
+            border-radius: 28px;
+            padding: 32px 28px;
+            flex: 1 1 280px;
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.07);
+            transition: 0.25s ease;
+            border: 1px solid #eef2f0;
+        }
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 30px 40px -12px rgba(30,111,92,0.15);
+        }
+        .card i {
+            font-size: 2.8rem;
+            color: #1E6F5C;
+            margin-bottom: 24px;
+        }
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+        }
+        .badge-tech {
+            display: inline-block;
+            background: #EFF7F3;
+            padding: 4px 12px;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            margin-top: 16px;
+            color: #1E6F5C;
+        }
+
+        /* Expertise unificada */
+        .hybrid-showcase {
+            background: #F1F8F5;
+            border-radius: 48px;
+            padding: 60px 40px;
+            margin-top: 20px;
+        }
+        .flex-two {
+            display: flex;
+            gap: 48px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .hybrid-text {
+            flex: 1.2;
+        }
+        .hybrid-text h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+        .hybrid-text p {
+            margin-bottom: 18px;
+        }
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 28px;
+        }
+        .tech-stack span {
+            background: white;
+            padding: 8px 20px;
+            border-radius: 40px;
+            font-weight: 500;
+            font-size: 0.85rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .hybrid-icon i {
+            font-size: 6rem;
+            color: #1E6F5C;
+            opacity: 0.8;
+        }
+
+        /* Cases */
+        .case-item {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 32px;
+            margin-bottom: 48px;
+            background: #F9FDFB;
+            border-radius: 36px;
+            padding: 32px;
+            align-items: center;
+            transition: 0.2s;
+        }
+        .case-icon {
+            flex: 0.8;
+            text-align: center;
+            font-size: 3rem;
+        }
+        .case-desc {
+            flex: 2;
+        }
+        .case-desc h3 {
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+        }
+
+        /* Contato */
+        .contact-form-section {
+            background: linear-gradient(110deg, #0B2B2B 0%, #1A4E44 100%);
+            color: white;
+            border-radius: 48px;
+            padding: 56px 48px;
+        }
+        .form-grid {
+            display: flex;
+            gap: 48px;
+            flex-wrap: wrap;
+        }
+        .contact-info {
+            flex: 1;
+        }
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 16px;
+        }
+        .contact-form {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .contact-form input,
+        .contact-form textarea,
+        .contact-form select {
+            padding: 14px 20px;
+            border-radius: 60px;
+            border: none;
+            font-family: inherit;
+            background: rgba(255,255,255,0.95);
+            font-size: 1rem;
+        }
+        .contact-form textarea {
+            border-radius: 28px;
+            resize: vertical;
+        }
+        .contact-form select {
+            appearance: auto;
+            border-radius: 60px;
+        }
+        .contact-form button {
+            background: #F4C542;
+            color: #1a2c3e;
+            font-weight: bold;
+            border: none;
+            padding: 14px;
+            border-radius: 60px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .contact-form button:hover {
+            background: #ffcf6e;
+        }
+        .contact-form button:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+        .feedback-success {
+            color: #D4F1E9 !important;
+            background: rgba(30,111,92,0.3);
+            padding: 10px;
+            border-radius: 8px;
+        }
+        .feedback-error {
+            color: #FFD966 !important;
+            background: rgba(0,0,0,0.2);
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        /* Footer */
+        footer {
+            background: #0c1f26;
+            color: #bcd0da;
+            padding: 48px 0 24px;
+            margin-top: 40px;
+        }
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        .social i {
+            font-size: 1.6rem;
+            margin-right: 18px;
+            color: #bcd0da;
+            transition: 0.2s;
+        }
+        .social i:hover {
+            color: #F4C542;
+        }
+
+        @media (max-width: 800px) {
+            .navbar {
+                flex-direction: column;
+                gap: 20px;
+            }
+            .nav-links {
+                gap: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .hero-content h1 {
+                font-size: 2.3rem;
+            }
+            .container {
+                padding: 0 20px;
+            }
+            .section {
+                padding: 50px 0;
+            }
+            .contact-form-section {
+                padding: 32px 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="container">
+        <div class="navbar">
+            <div class="logo">
+                <h1>Start Mobile</h1>
+                <span>Indústria 4.0 · NFC · MQTT · ERP · Apps Nativos &amp; Híbridos</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#solucoes">Soluções</a></li>
+                <li><a href="#expertise">Expertise</a></li>
+                <li><a href="#cases">Cases</a></li>
+                <li><a href="#contato" class="btn-contato-nav">Contato</a></li>
+            </ul>
+        </div>
+    </div>
+</header>
+
+<main>
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container hero-grid">
+            <div class="hero-content">
+                <div class="hero-badge">ESPECIALISTAS EM APPS INDUSTRIAIS &amp; CORPORATIVOS</div>
+                <h1>Aplicativos nativos, híbridos, ERP e SCADA para Indústria 4.0</h1>
+                <p>Leitura NFC STMicroelectronics, telemetria MQTT, sistemas desktop e dashboards em tempo real. Desenvolvimento multiplataforma com performance nativa e soluções sob medida.</p>
+                <div class="btn-group">
+                    <a href="#contato" class="btn-primary">Solicitar proposta técnica</a>
+                    <a href="#expertise" class="btn-outline">Nossa stack NFC / MQTT / ERP</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://cdn-icons-png.flaticon.com/512/9112/9112638.png" alt="Indústria 4.0 mobile">
+            </div>
+        </div>
+    </section>
+
+    <!-- Soluções -->
+    <section id="solucoes" class="section">
+        <div class="container">
+            <h2 class="section-title">Soluções completas para o ecossistema industrial e corporativo</h2>
+            <p class="section-sub">Apps customizados, sistemas desktop, integração com hardware e nuvem – tudo alinhado às suas necessidades.</p>
+            <div class="cards-grid">
+                <div class="card">
+                    <i class="fas fa-microchip"></i>
+                    <h3>Leitura NFC STM</h3>
+                    <p>Aplicativos nativos Android/iOS para ler/gravar memórias NFC da STMicroelectronics (M24SR, M24LR, ST25DV). Rastreamento, autenticação e manutenção industrial.</p>
+                    <div class="badge-tech">NFC · NDEF · ST25 SDK</div>
+                </div>
+                <div class="card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>MQTT para Indústria 4.0</h3>
+                    <p>Apps com clientes MQTT embarcados, publish/subscribe de telemetria, controle de sensores e atuadores em tempo real. Integração com brokers industriais (HiveMQ, EMQX).</p>
+                    <div class="badge-tech">MQTT · TLS/SSL · QoS</div>
+                </div>
+                <div class="card">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>Apps Nativos &amp; Híbridos</h3>
+                    <p>Desenvolvimento em Kotlin/Swift ou Flutter/React Native. Performance nativa para leitores NFC, câmera industrial e conectividade Bluetooth/Serial.</p>
+                    <div class="badge-tech">Kotlin · Swift · Flutter · RN</div>
+                </div>
+                <div class="card">
+                    <i class="fas fa-industry"></i>
+                    <h3>SCADA Mobile &amp; Dashboards</h3>
+                    <p>Visualização de KPIs, ordens de produção, manutenção preditiva e integração OPC UA. Interface responsiva para tablets e coletores industriais.</p>
+                    <div class="badge-tech">React Native · WebSocket</div>
+                </div>
+                <div class="card">
+                    <i class="fas fa-desktop"></i>
+                    <h3>ERP &amp; Softwares Desktop</h3>
+                    <p>Sistemas de gestão, logística, RH e finanças com interface nativa para Windows, Linux e macOS. Sincronização offline-first e alto desempenho.</p>
+                    <div class="badge-tech">.NET MAUI · Electron · Java</div>
+                </div>
+                <div class="card">
+                    <i class="fas fa-code-branch"></i>
+                    <h3>Multiplataforma &amp; Customização</h3>
+                    <p>Código único para iOS, Android, Web e Desktop. Transformamos suas regras de negócio em soluções escaláveis, 100% alinhadas aos seus processos.</p>
+                    <div class="badge-tech">Flutter · React Native · MAUI</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expertise unificada -->
+    <div class="container" id="expertise">
+        <div class="hybrid-showcase">
+            <div class="flex-two">
+                <div class="hybrid-text">
+                    <h2>Expertise real em NFC ST, MQTT, ERP e desenvolvimento multiplataforma</h2>
+                    <p>Na <strong>Start Mobile</strong>, unimos o melhor dos dois mundos: performance nativa quando necessário e agilidade multiplataforma para reduzir custos e time-to-market. Dominamos <strong>Kotlin, Swift, Flutter, React Native e .NET MAUI</strong>, garantindo que seu aplicativo industrial, ERP ou SCADA rode perfeitamente em qualquer dispositivo – desde coletores Android até terminais Windows e estações Linux.</p>
+                    <p>Desenvolvemos soluções que conversam diretamente com tags NFC da ST (famílias M24SR, ST25DV) utilizando APIs nativas (Android NfcAdapter, iOS Core NFC) e integramos clientes MQTT robustos com suporte a TLS, retenção de mensagens e reconnect automático. Além disso, criamos sistemas desktop completos com integração a bancos de dados locais e nuvem, sempre priorizando segurança, baixa latência e experiência do usuário.</p>
+                    <div class="tech-stack">
+                        <span>ST25 SDK</span><span>NFC-A/NFC-F</span><span>MQTT 5.0</span>
+                        <span>Kotlin Multiplatform</span><span>Swift CoreNFC</span>
+                        <span>HiveMQ</span><span>EMQX</span><span>Flutter</span>
+                        <span>React Native</span><span>.NET MAUI</span><span>Electron</span>
+                        <span>Node.js</span><span>OPC UA</span>
+                    </div>
+                </div>
+                <div class="hybrid-icon">
+                    <i class="fas fa-layer-group"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cases -->
+    <section id="cases" class="section cases">
+        <div class="container">
+            <h2 class="section-title">Cases reais – Indústria 4.0, ERP e automação</h2>
+            <p class="section-sub">Projetos entregues com NFC ST, MQTT, sistemas desktop e dashboards em operação.</p>
+
+            <div class="case-item">
+                <div class="case-icon"><i class="fas fa-rss fa-3x"></i></div>
+                <div class="case-desc">
+                    <h3>Rastreamento de Ferramentas com NFC ST25DV</h3>
+                    <p>App nativo Android para leitura de tags ST25DV em almoxarifado industrial. Leitura de 128 bytes de memória, registro automático de retirada/devolução via MQTT para o ERP. Redução de 45% em perdas de ferramentas.</p>
+                </div>
+            </div>
+            <div class="case-item">
+                <div class="case-icon"><i class="fas fa-thermometer-half fa-3x"></i></div>
+                <div class="case-desc">
+                    <h3>Monitoramento de Temperatura com MQTT</h3>
+                    <p>App híbrido (Flutter) conectado a sensores via MQTT (broker AWS IoT Core). Dashboards em tempo real e alertas push para manutenção. Escalado para 5 fábricas.</p>
+                </div>
+            </div>
+            <div class="case-item">
+                <div class="case-icon"><i class="fas fa-tasks fa-3x"></i></div>
+                <div class="case-desc">
+                    <h3>ERP para Logística e Faturamento</h3>
+                    <p>Solução desktop multiplataforma (.NET MAUI) com módulos de estoque, roteirização e faturamento. Sincronização offline-first e interface nativa Windows/macOS. +40% eficiência operacional.</p>
+                </div>
+            </div>
+            <div class="case-item">
+                <div class="case-icon"><i class="fas fa-plug fa-3x"></i></div>
+                <div class="case-desc">
+                    <h3>Gateway Móvel para Coleta de Dados</h3>
+                    <p>App multiplataforma (React Native) com leitor NFC ST e cliente MQTT em segundo plano. Sincronização offline-first para áreas sem cobertura. Implantado em planta automotiva.</p>
+                </div>
+            </div>
+            <div class="case-item">
+                <div class="case-icon"><i class="fas fa-charging-station fa-3x"></i></div>
+                <div class="case-desc">
+                    <h3>Sistema de Manutenção Preditiva</h3>
+                    <p>Aplicativo iOS nativo que lê ciclos de operação de máquinas via NFC (tag M24SR) e envia via MQTT para analytics, gerando ordens de serviço automáticas. +30% de uptime.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contato -->
+    <div class="container" id="contato">
+        <div class="contact-form-section">
+            <div class="form-grid">
+                <div class="contact-info">
+                    <h3>Desenvolva sua solução com NFC, MQTT, ERP ou SCADA</h3>
+                    <p style="margin: 20px 0; opacity: 0.9;">Solicite um diagnóstico técnico para seu projeto – seja leitura de memórias STMicroelectronics, integração MQTT, aplicativo multiplataforma ou sistema desktop. Nossa equipe de engenharia mobile e desktop entrega performance, segurança e escalabilidade para Indústria 4.0 e além.</p>
+                    <p><i class="fas fa-envelope"></i> industrial@startmobile.com.br</p>
+                    <p><i class="fas fa-phone-alt"></i> +55 (11) 3800-9900</p>
+                    <div class="social" style="margin-top: 24px;">
+                        <i class="fab fa-linkedin"></i>
+                        <i class="fab fa-github"></i>
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                </div>
+                <form class="contact-form" id="contactFormUnificado">
+                    <input type="text" id="nome" placeholder="Nome completo" required>
+                    <input type="email" id="email" placeholder="E-mail corporativo" required>
+                    <input type="text" id="empresa" placeholder="Empresa / Setor">
+                    <select id="tecnologia" required>
+                        <option value="">Tecnologia de interesse</option>
+                        <option value="nfc_st">Leitura NFC STMicroelectronics (M24SR/ST25DV)</option>
+                        <option value="mqtt">Aplicativo com MQTT (Indústria 4.0)</option>
+                        <option value="hibrido_nativo">App híbrido/nativo multiplataforma</option>
+                        <option value="scada">SCADA / Dashboards industriais</option>
+                        <option value="erp">ERP / Sistema Desktop</option>
+                        <option value="outro">Outro / Consultoria</option>
+                    </select>
+                    <textarea rows="4" id="mensagem" placeholder="Descreva sua necessidade: tipo de tag NFC, broker MQTT, plataforma (Android/iOS/Desktop), número de usuários, etc." required></textarea>
+                    <button type="submit" id="submitBtn">Enviar proposta técnica <i class="fas fa-microchip"></i></button>
+                    <p id="formFeedback" style="font-size:0.85rem; margin-top: 8px;"></p>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <div class="container footer-content">
+        <div>
+            <h3 style="color:white;">Start Mobile</h3>
+            <p style="margin-top: 12px;">Apps Industriais · NFC ST · MQTT · Native & Hybrid<br>ERP · SCADA · Android · iOS · Flutter · React Native · .NET MAUI</p>
+        </div>
+        <div>
+            <strong>Links</strong><br>
+            <a href="#solucoes" style="color:#bcd0da; text-decoration:none;">Soluções</a><br>
+            <a href="#expertise" style="color:#bcd0da; text-decoration:none;">Expertise NFC/MQTT/ERP</a><br>
+            <a href="#cases" style="color:#bcd0da; text-decoration:none;">Cases</a>
+        </div>
+        <div>
+            <strong>Contato Industrial</strong><br>
+            industrial@startmobile.com<br>
+            +55 11 3800-9900<br>
+            <span>© 2025 Start Mobile - Inovação para Indústria 4.0</span>
+        </div>
+    </div>
+</footer>
+
+<script>
+    (function() {
+        const form = document.getElementById('contactFormUnificado');
+        const feedback = document.getElementById('formFeedback');
+        const submitBtn = document.getElementById('submitBtn');
+        let enviando = false;
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            if (enviando) return;
+
+            const nome = document.getElementById('nome').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const empresa = document.getElementById('empresa').value.trim();
+            const tecnologia = document.getElementById('tecnologia').value;
+            const mensagem = document.getElementById('mensagem').value.trim();
+
+            if (!nome || !email || !mensagem) {
+                feedback.innerHTML = '❌ Preencha nome, e-mail e mensagem.';
+                feedback.className = 'feedback-error';
+                return;
+            }
+            if (!email.includes('@') || !email.includes('.')) {
+                feedback.innerHTML = '❌ E-mail inválido.';
+                feedback.className = 'feedback-error';
+                return;
+            }
+            if (!tecnologia) {
+                feedback.innerHTML = '⚠️ Selecione a tecnologia de interesse.';
+                feedback.className = 'feedback-error';
+                return;
+            }
+            if (mensagem.length < 10) {
+                feedback.innerHTML = '❌ A mensagem deve ter pelo menos 10 caracteres.';
+                feedback.className = 'feedback-error';
+                return;
+            }
+
+            enviando = true;
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = 'Enviando... <i class="fas fa-spinner fa-pulse"></i>';
+            submitBtn.disabled = true;
+
+            try {
+                const formData = new FormData();
+                formData.append('nome', escapeHtml(nome));
+                formData.append('email', email);
+                formData.append('empresa', escapeHtml(empresa));
+                formData.append('tecnologia', tecnologia);
+                formData.append('mensagem', escapeHtml(mensagem));
+
+                // Ajuste o caminho do script PHP conforme necessário
+                const response = await fetch('enviar.php', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    feedback.innerHTML = `✅ ${result.message}`;
+                    feedback.className = 'feedback-success';
+                    form.reset();
+                    setTimeout(() => {
+                        feedback.innerHTML = '';
+                        feedback.className = '';
+                    }, 5000);
+                } else {
+                    feedback.innerHTML = `❌ ${result.message}`;
+                    feedback.className = 'feedback-error';
+                }
+            } catch (error) {
+                console.error('Erro:', error);
+                feedback.innerHTML = '❌ Erro de conexão. Tente novamente ou ligue para (11) 3800-9900.';
+                feedback.className = 'feedback-error';
+            } finally {
+                enviando = false;
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }
+        });
+    })();
+
+    // Scroll suave para links internos
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            if (href === "#" || href === "") return;
+            const target = document.querySelector(href);
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+</script>
+</body>
+</html>
