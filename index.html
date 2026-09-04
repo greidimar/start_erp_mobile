@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Start Mobile | Indústria 4.0 · NFC · MQTT · ERP · Apps Nativos & Híbridos</title>
+    <title>Start Mobile | ERP · Apps Híbridos · NFC · Sistemas para Clínicas</title>
     <!-- Google Fonts & Font Awesome -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        /* ===== RESET & BASE ===== */
         * {
             margin: 0;
             padding: 0;
@@ -28,7 +29,7 @@
             padding: 0 32px;
         }
 
-        /* Header */
+        /* ===== HEADER ===== */
         header {
             background: #ffffff;
             box-shadow: 0 8px 20px rgba(0,0,0,0.02), 0 2px 6px rgba(0,0,0,0.05);
@@ -91,7 +92,7 @@
             transform: scale(1.02);
         }
 
-        /* Hero */
+        /* ===== HERO ===== */
         .hero {
             padding: 80px 0 60px;
             background: linear-gradient(120deg, #ffffff 0%, #f0f7f4 100%);
@@ -171,7 +172,7 @@
             filter: drop-shadow(0 15px 25px rgba(0,0,0,0.05));
         }
 
-        /* Seções */
+        /* ===== SEÇÕES ===== */
         .section {
             padding: 80px 0;
         }
@@ -228,7 +229,7 @@
             color: #1E6F5C;
         }
 
-        /* Expertise unificada */
+        /* Expertise */
         .hybrid-showcase {
             background: #F1F8F5;
             border-radius: 48px;
@@ -297,7 +298,7 @@
             margin-bottom: 10px;
         }
 
-        /* Contato */
+        /* ===== CONTATO ===== */
         .contact-form-section {
             background: linear-gradient(110deg, #0B2B2B 0%, #1A4E44 100%);
             color: white;
@@ -331,6 +332,7 @@
             font-family: inherit;
             background: rgba(255,255,255,0.95);
             font-size: 1rem;
+            width: 100%;
         }
         .contact-form textarea {
             border-radius: 28px;
@@ -341,7 +343,7 @@
             border-radius: 60px;
         }
         .contact-form button {
-            background: #F4C542;
+            background: #60a5fa; /* Azul claro solicitado */
             color: #1a2c3e;
             font-weight: bold;
             border: none;
@@ -350,14 +352,13 @@
             font-size: 1rem;
             cursor: pointer;
             transition: 0.2s;
+            margin-top: 0.5rem;
         }
         .contact-form button:hover {
-            background: #ffcf6e;
+            background: #7ab7ff;
+            transform: scale(1.01);
         }
-        .contact-form button:disabled {
-            opacity: 0.7;
-            cursor: not-allowed;
-        }
+        /* Mensagem de sucesso/erro (exibida via JS) */
         .feedback-success {
             color: #D4F1E9 !important;
             background: rgba(30,111,92,0.3);
@@ -416,6 +417,9 @@
             .contact-form-section {
                 padding: 32px 24px;
             }
+            .form-grid {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
@@ -425,7 +429,7 @@
         <div class="navbar">
             <div class="logo">
                 <h1>Start Mobile</h1>
-                <span>Indústria 4.0 · NFC · MQTT · ERP · Apps Nativos &amp; Híbridos</span>
+                <span>ERP · Apps Híbridos · NFC · Sistemas para Clínicas</span>
             </div>
             <ul class="nav-links">
                 <li><a href="#solucoes">Soluções</a></li>
@@ -438,84 +442,104 @@
 </header>
 
 <main>
-    <!-- Hero -->
+    <!-- ===== HERO ===== -->
     <section class="hero">
         <div class="container hero-grid">
             <div class="hero-content">
-                <div class="hero-badge">ESPECIALISTAS EM APPS INDUSTRIAIS &amp; CORPORATIVOS</div>
-                <h1>Aplicativos nativos, híbridos, ERP e SCADA para Indústria 4.0</h1>
-                <p>Leitura NFC STMicroelectronics, telemetria MQTT, sistemas desktop e dashboards em tempo real. Desenvolvimento multiplataforma com performance nativa e soluções sob medida.</p>
+                <div class="hero-badge">ERP · APPS HÍBRIDOS · NFC · SAÚDE</div>
+                <h1>Sistemas completos para gestão empresarial e clínicas</h1>
+                <p>Desenvolvimento de ERP com notas fiscais eletrônicas, pedidos, financeiro, estoque e relatórios. Apps híbridos com leitura NFC e sistemas de chamada para clínicas.</p>
                 <div class="btn-group">
-                    <a href="#contato" class="btn-primary">Solicitar proposta técnica</a>
-                    <a href="#expertise" class="btn-outline">Nossa stack NFC / MQTT / ERP</a>
+                    <a href="#contato" class="btn-primary">Solicitar proposta</a>
+                    <a href="#expertise" class="btn-outline">Nossas tecnologias</a>
                 </div>
             </div>
             <div class="hero-image">
-                <img src="https://cdn-icons-png.flaticon.com/512/9112/9112638.png" alt="Indústria 4.0 mobile">
+                <img src="https://cdn-icons-png.flaticon.com/512/9112/9112638.png" alt="ERP e Mobile">
             </div>
         </div>
     </section>
 
-    <!-- Soluções -->
+    <!-- ===== SOLUÇÕES ===== -->
     <section id="solucoes" class="section">
         <div class="container">
-            <h2 class="section-title">Soluções completas para o ecossistema industrial e corporativo</h2>
-            <p class="section-sub">Apps customizados, sistemas desktop, integração com hardware e nuvem – tudo alinhado às suas necessidades.</p>
+            <h2 class="section-title">Soluções inteligentes para seu negócio</h2>
+            <p class="section-sub">ERP completo, apps híbridos, leitura NFC e sistemas para clínicas – tudo sob medida.</p>
             <div class="cards-grid">
+                <!-- ERP Módulos -->
                 <div class="card">
-                    <i class="fas fa-microchip"></i>
-                    <h3>Leitura NFC STM</h3>
-                    <p>Aplicativos nativos Android/iOS para ler/gravar memórias NFC da STMicroelectronics (M24SR, M24LR, ST25DV). Rastreamento, autenticação e manutenção industrial.</p>
-                    <div class="badge-tech">NFC · NDEF · ST25 SDK</div>
+                    <i class="fas fa-file-invoice"></i>
+                    <h3>Nota Fiscal Eletrônica</h3>
+                    <p>Emissão e gestão de NF-e, CT-e, NFC-e com integração aos sistemas fiscais. Controle de tributação e XML.</p>
+                    <div class="badge-tech">SEFAZ · SPED · XML</div>
                 </div>
                 <div class="card">
-                    <i class="fas fa-chart-line"></i>
-                    <h3>MQTT para Indústria 4.0</h3>
-                    <p>Apps com clientes MQTT embarcados, publish/subscribe de telemetria, controle de sensores e atuadores em tempo real. Integração com brokers industriais (HiveMQ, EMQX).</p>
-                    <div class="badge-tech">MQTT · TLS/SSL · QoS</div>
+                    <i class="fas fa-cart-plus"></i>
+                    <h3>Pedidos de Vendas e Compras</h3>
+                    <p>Fluxo completo de orçamento, pedido, faturamento e compras. Controle de fornecedores e cotações.</p>
+                    <div class="badge-tech">CRM · Suprimentos</div>
                 </div>
+                <div class="card">
+                    <i class="fas fa-coins"></i>
+                    <h3>Contas a Pagar / Receber</h3>
+                    <p>Gestão financeira com fluxo de caixa, boletos, conciliação bancária e relatórios gerenciais.</p>
+                    <div class="badge-tech">Boleto · Integração bancária</div>
+                </div>
+                <div class="card">
+                    <i class="fas fa-boxes"></i>
+                    <h3>Estoque e Inventário</h3>
+                    <p>Controle de entradas, saídas, transferências, inventário cíclico e rastreabilidade por lotes.</p>
+                    <div class="badge-tech">Código de barras · NFC</div>
+                </div>
+                <div class="card">
+                    <i class="fas fa-users"></i>
+                    <h3>Cadastros Gerais</h3>
+                    <p>Clientes, fornecedores, funcionários, produtos, serviços e parceiros – tudo centralizado.</p>
+                    <div class="badge-tech">CRM · RH</div>
+                </div>
+                <div class="card">
+                    <i class="fas fa-chart-pie"></i>
+                    <h3>Relatórios e Dashboards</h3>
+                    <p>Gráficos, indicadores de desempenho, relatórios personalizados para tomada de decisão.</p>
+                    <div class="badge-tech">Power BI · Jasper</div>
+                </div>
+                <!-- Apps Híbridos e NFC -->
                 <div class="card">
                     <i class="fas fa-mobile-alt"></i>
-                    <h3>Apps Nativos &amp; Híbridos</h3>
-                    <p>Desenvolvimento em Kotlin/Swift ou Flutter/React Native. Performance nativa para leitores NFC, câmera industrial e conectividade Bluetooth/Serial.</p>
-                    <div class="badge-tech">Kotlin · Swift · Flutter · RN</div>
+                    <h3>Apps Híbridos (Android/iOS)</h3>
+                    <p>Aplicativos multiplataforma com Flutter/React Native. Performance nativa, câmera, GPS, push e integração com ERP.</p>
+                    <div class="badge-tech">Flutter · React Native</div>
                 </div>
                 <div class="card">
-                    <i class="fas fa-industry"></i>
-                    <h3>SCADA Mobile &amp; Dashboards</h3>
-                    <p>Visualização de KPIs, ordens de produção, manutenção preditiva e integração OPC UA. Interface responsiva para tablets e coletores industriais.</p>
-                    <div class="badge-tech">React Native · WebSocket</div>
+                    <i class="fas fa-rss"></i>
+                    <h3>Leitura NFC</h3>
+                    <p>Apps com leitura/gravação de tags NFC para controle de estoque, autenticação, check-in e rastreamento de ativos.</p>
+                    <div class="badge-tech">NFC-A · NDEF · ST25</div>
                 </div>
                 <div class="card">
-                    <i class="fas fa-desktop"></i>
-                    <h3>ERP &amp; Softwares Desktop</h3>
-                    <p>Sistemas de gestão, logística, RH e finanças com interface nativa para Windows, Linux e macOS. Sincronização offline-first e alto desempenho.</p>
-                    <div class="badge-tech">.NET MAUI · Electron · Java</div>
-                </div>
-                <div class="card">
-                    <i class="fas fa-code-branch"></i>
-                    <h3>Multiplataforma &amp; Customização</h3>
-                    <p>Código único para iOS, Android, Web e Desktop. Transformamos suas regras de negócio em soluções escaláveis, 100% alinhadas aos seus processos.</p>
-                    <div class="badge-tech">Flutter · React Native · MAUI</div>
+                    <i class="fas fa-clinic-medical"></i>
+                    <h3>Sistema de Chamada para Clínicas</h3>
+                    <p>Painel de atendimento, fila de espera, notificações por SMS/WhatsApp, integração com prontuário e agendamento.</p>
+                    <div class="badge-tech">Web · App · Push</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Expertise unificada -->
+    <!-- ===== EXPERTISE ===== -->
     <div class="container" id="expertise">
         <div class="hybrid-showcase">
             <div class="flex-two">
                 <div class="hybrid-text">
-                    <h2>Expertise real em NFC ST, MQTT, ERP e desenvolvimento multiplataforma</h2>
-                    <p>Na <strong>Start Mobile</strong>, unimos o melhor dos dois mundos: performance nativa quando necessário e agilidade multiplataforma para reduzir custos e time-to-market. Dominamos <strong>Kotlin, Swift, Flutter, React Native e .NET MAUI</strong>, garantindo que seu aplicativo industrial, ERP ou SCADA rode perfeitamente em qualquer dispositivo – desde coletores Android até terminais Windows e estações Linux.</p>
-                    <p>Desenvolvemos soluções que conversam diretamente com tags NFC da ST (famílias M24SR, ST25DV) utilizando APIs nativas (Android NfcAdapter, iOS Core NFC) e integramos clientes MQTT robustos com suporte a TLS, retenção de mensagens e reconnect automático. Além disso, criamos sistemas desktop completos com integração a bancos de dados locais e nuvem, sempre priorizando segurança, baixa latência e experiência do usuário.</p>
+                    <h2>Expertise em ERP, apps híbridos, NFC e sistemas de saúde</h2>
+                    <p>Na <strong>Start Mobile</strong>, desenvolvemos soluções completas: desde o back-end de ERP com notas fiscais eletrônicas, pedidos, financeiro e estoque, até aplicativos híbridos (Flutter/React Native) com leitura NFC e sistemas de chamada para clínicas. Nossa equipe domina tecnologias modernas e integrações com APIs fiscais, bancos e dispositivos móveis.</p>
+                    <p>Entregamos código limpo, arquitetura escalável e interfaces intuitivas. Seja um ERP desktop, um app para leitura de tags NFC ou um sistema de fila para clínicas, criamos a solução certa para o seu negócio.</p>
                     <div class="tech-stack">
-                        <span>ST25 SDK</span><span>NFC-A/NFC-F</span><span>MQTT 5.0</span>
-                        <span>Kotlin Multiplatform</span><span>Swift CoreNFC</span>
-                        <span>HiveMQ</span><span>EMQX</span><span>Flutter</span>
-                        <span>React Native</span><span>.NET MAUI</span><span>Electron</span>
-                        <span>Node.js</span><span>OPC UA</span>
+                        <span>Flutter</span><span>React Native</span>
+                        <span>Kotlin/Swift</span><span>.NET</span><span>Java</span>
+                        <span>NFC SDK</span><span>ST25</span>
+                        <span>SEFAZ</span><span>XML</span><span>Boleto</span>
+                        <span>Firebase</span><span>SQL Server</span><span>PostgreSQL</span>
                     </div>
                 </div>
                 <div class="hybrid-icon">
@@ -525,58 +549,51 @@
         </div>
     </div>
 
-    <!-- Cases -->
+    <!-- ===== CASES ===== -->
     <section id="cases" class="section cases">
         <div class="container">
-            <h2 class="section-title">Cases reais – Indústria 4.0, ERP e automação</h2>
-            <p class="section-sub">Projetos entregues com NFC ST, MQTT, sistemas desktop e dashboards em operação.</p>
+            <h2 class="section-title">Cases de sucesso</h2>
+            <p class="section-sub">Projetos entregues em ERP, apps móveis, NFC e clínicas.</p>
 
             <div class="case-item">
-                <div class="case-icon"><i class="fas fa-rss fa-3x"></i></div>
+                <div class="case-icon"><i class="fas fa-file-invoice fa-3x"></i></div>
                 <div class="case-desc">
-                    <h3>Rastreamento de Ferramentas com NFC ST25DV</h3>
-                    <p>App nativo Android para leitura de tags ST25DV em almoxarifado industrial. Leitura de 128 bytes de memória, registro automático de retirada/devolução via MQTT para o ERP. Redução de 45% em perdas de ferramentas.</p>
+                    <h3>ERP Completo para Distribuidora</h3>
+                    <p>Sistema com NF-e, pedidos de venda, compras, contas a pagar/receber, estoque e relatórios gerenciais. Integração com SEFAZ e boletos. +40% de produtividade.</p>
                 </div>
             </div>
             <div class="case-item">
-                <div class="case-icon"><i class="fas fa-thermometer-half fa-3x"></i></div>
+                <div class="case-icon"><i class="fas fa-mobile-alt fa-3x"></i></div>
                 <div class="case-desc">
-                    <h3>Monitoramento de Temperatura com MQTT</h3>
-                    <p>App híbrido (Flutter) conectado a sensores via MQTT (broker AWS IoT Core). Dashboards em tempo real e alertas push para manutenção. Escalado para 5 fábricas.</p>
+                    <h3>App Híbrido com Leitura NFC para Estoque</h3>
+                    <p>App Flutter que lê tags NFC para inventário e rastreamento de ativos. Sincronização com ERP em tempo real. Redução de 60% no tempo de contagem.</p>
                 </div>
             </div>
             <div class="case-item">
-                <div class="case-icon"><i class="fas fa-tasks fa-3x"></i></div>
+                <div class="case-icon"><i class="fas fa-clinic-medical fa-3x"></i></div>
                 <div class="case-desc">
-                    <h3>ERP para Logística e Faturamento</h3>
-                    <p>Solução desktop multiplataforma (.NET MAUI) com módulos de estoque, roteirização e faturamento. Sincronização offline-first e interface nativa Windows/macOS. +40% eficiência operacional.</p>
+                    <h3>Sistema de Chamada para Clínica Odontológica</h3>
+                    <p>Painel de atendimento com fila inteligente, notificações por WhatsApp e integração com agenda. Melhora na experiência do paciente e otimização do fluxo.</p>
                 </div>
             </div>
             <div class="case-item">
-                <div class="case-icon"><i class="fas fa-plug fa-3x"></i></div>
+                <div class="case-icon"><i class="fas fa-coins fa-3x"></i></div>
                 <div class="case-desc">
-                    <h3>Gateway Móvel para Coleta de Dados</h3>
-                    <p>App multiplataforma (React Native) com leitor NFC ST e cliente MQTT em segundo plano. Sincronização offline-first para áreas sem cobertura. Implantado em planta automotiva.</p>
-                </div>
-            </div>
-            <div class="case-item">
-                <div class="case-icon"><i class="fas fa-charging-station fa-3x"></i></div>
-                <div class="case-desc">
-                    <h3>Sistema de Manutenção Preditiva</h3>
-                    <p>Aplicativo iOS nativo que lê ciclos de operação de máquinas via NFC (tag M24SR) e envia via MQTT para analytics, gerando ordens de serviço automáticas. +30% de uptime.</p>
+                    <h3>Módulo Financeiro para ERP</h3>
+                    <p>Contas a pagar/receber com conciliação bancária automática, emissão de boletos e fluxo de caixa projetado. Redução de 30% no tempo de fechamento.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contato -->
+    <!-- ===== CONTATO com Web3Forms ===== -->
     <div class="container" id="contato">
         <div class="contact-form-section">
             <div class="form-grid">
                 <div class="contact-info">
-                    <h3>Desenvolva sua solução com NFC, MQTT, ERP ou SCADA</h3>
-                    <p style="margin: 20px 0; opacity: 0.9;">Solicite um diagnóstico técnico para seu projeto – seja leitura de memórias STMicroelectronics, integração MQTT, aplicativo multiplataforma ou sistema desktop. Nossa equipe de engenharia mobile e desktop entrega performance, segurança e escalabilidade para Indústria 4.0 e além.</p>
-                    <p><i class="fas fa-envelope"></i> industrial@startmobile.com.br</p>
+                    <h3>Vamos construir sua solução?</h3>
+                    <p style="margin: 20px 0; opacity: 0.9;">ERP, app híbrido, leitura NFC, sistema para clínicas – entre em contato e descubra como podemos transformar sua operação.</p>
+                    <p><i class="fas fa-envelope"></i> contato@startmobile.com.br</p>
                     <p><i class="fas fa-phone-alt"></i> +55 (11) 3800-9900</p>
                     <div class="social" style="margin-top: 24px;">
                         <i class="fab fa-linkedin"></i>
@@ -584,150 +601,86 @@
                         <i class="fab fa-whatsapp"></i>
                     </div>
                 </div>
-                <form class="contact-form" id="contactFormUnificado">
-                    <input type="text" id="nome" placeholder="Nome completo" required>
-                    <input type="email" id="email" placeholder="E-mail corporativo" required>
-                    <input type="text" id="empresa" placeholder="Empresa / Setor">
-                    <select id="tecnologia" required>
+                <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+                    <!-- Chave de acesso do Web3Forms -->
+                    <input type="hidden" name="access_key" value="84b437a7-681a-4c24-a529-77582f286ade">
+                    <!-- Redirecionamento para a própria página com parâmetro de sucesso -->
+                    <input type="hidden" name="redirect" value="https://appstartmobi.com.br/#contato?success=true">
+
+                    <input type="text" name="nome" placeholder="Nome completo" required>
+                    <input type="email" name="email" placeholder="E-mail corporativo" required>
+                    <input type="text" name="empresa" placeholder="Empresa / Setor">
+                    <select name="tecnologia" required>
                         <option value="">Tecnologia de interesse</option>
-                        <option value="nfc_st">Leitura NFC STMicroelectronics (M24SR/ST25DV)</option>
-                        <option value="mqtt">Aplicativo com MQTT (Indústria 4.0)</option>
-                        <option value="hibrido_nativo">App híbrido/nativo multiplataforma</option>
-                        <option value="scada">SCADA / Dashboards industriais</option>
-                        <option value="erp">ERP / Sistema Desktop</option>
+                        <option value="erp">ERP (NF-e, pedidos, financeiro, estoque)</option>
+                        <option value="app_hibrido">App híbrido (Android/iOS)</option>
+                        <option value="nfc">Leitura NFC (tags, rastreamento)</option>
+                        <option value="clinica">Sistema de chamada para clínicas</option>
                         <option value="outro">Outro / Consultoria</option>
                     </select>
-                    <textarea rows="4" id="mensagem" placeholder="Descreva sua necessidade: tipo de tag NFC, broker MQTT, plataforma (Android/iOS/Desktop), número de usuários, etc." required></textarea>
-                    <button type="submit" id="submitBtn">Enviar proposta técnica <i class="fas fa-microchip"></i></button>
-                    <p id="formFeedback" style="font-size:0.85rem; margin-top: 8px;"></p>
+                    <textarea name="mensagem" rows="4" placeholder="Descreva sua necessidade: módulos do ERP, funcionalidades do app, tipo de NFC, fluxo da clínica..." required></textarea>
+
+                    <!-- Botão com azul claro e espaçamento -->
+                    <button type="submit" style="background-color: #60a5fa; border: none; cursor: pointer; margin-top: 1.5rem;">
+                        Enviar mensagem <i class="fas fa-paper-plane"></i>
+                    </button>
                 </form>
+                <p id="formFeedback" style="font-size:0.85rem; margin-top: 8px; color: #D4F1E9; text-align: center;"></p>
             </div>
         </div>
     </div>
 </main>
 
+<!-- ===== FOOTER ===== -->
 <footer>
     <div class="container footer-content">
         <div>
             <h3 style="color:white;">Start Mobile</h3>
-            <p style="margin-top: 12px;">Apps Industriais · NFC ST · MQTT · Native & Hybrid<br>ERP · SCADA · Android · iOS · Flutter · React Native · .NET MAUI</p>
+            <p style="margin-top: 12px;">ERP · Apps Híbridos · NFC · Sistemas para Clínicas<br>Android · iOS · Flutter · React Native · .NET</p>
         </div>
         <div>
             <strong>Links</strong><br>
             <a href="#solucoes" style="color:#bcd0da; text-decoration:none;">Soluções</a><br>
-            <a href="#expertise" style="color:#bcd0da; text-decoration:none;">Expertise NFC/MQTT/ERP</a><br>
+            <a href="#expertise" style="color:#bcd0da; text-decoration:none;">Expertise</a><br>
             <a href="#cases" style="color:#bcd0da; text-decoration:none;">Cases</a>
         </div>
         <div>
-            <strong>Contato Industrial</strong><br>
-            industrial@startmobile.com<br>
+            <strong>Contato</strong><br>
+            contato@startmobile.com<br>
             +55 11 3800-9900<br>
-            <span>© 2025 Start Mobile - Inovação para Indústria 4.0</span>
+            <span>© 2025 Start Mobile - Inovação em software</span>
         </div>
     </div>
 </footer>
 
+<!-- ===== SCRIPT: Feedback de envio (via parâmetro success) ===== -->
 <script>
     (function() {
-        const form = document.getElementById('contactFormUnificado');
-        const feedback = document.getElementById('formFeedback');
-        const submitBtn = document.getElementById('submitBtn');
-        let enviando = false;
-
-        function escapeHtml(text) {
-            const div = document.createElement('div');
-            div.textContent = text;
-            return div.innerHTML;
+        // Verifica se a URL contém ?success=true (após redirecionamento)
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('success') === 'true') {
+            const feedback = document.getElementById('formFeedback');
+            if (feedback) {
+                feedback.innerHTML = '✅ Mensagem enviada com sucesso! Em breve nossa equipe entrará em contato.';
+                feedback.className = 'feedback-success';
+                // Remove o parâmetro da URL para não mostrar novamente ao recarregar
+                window.history.replaceState({}, document.title, window.location.pathname + window.location.hash);
+            }
         }
 
-        form.addEventListener('submit', async function(e) {
-            e.preventDefault();
-            if (enviando) return;
-
-            const nome = document.getElementById('nome').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const empresa = document.getElementById('empresa').value.trim();
-            const tecnologia = document.getElementById('tecnologia').value;
-            const mensagem = document.getElementById('mensagem').value.trim();
-
-            if (!nome || !email || !mensagem) {
-                feedback.innerHTML = '❌ Preencha nome, e-mail e mensagem.';
-                feedback.className = 'feedback-error';
-                return;
-            }
-            if (!email.includes('@') || !email.includes('.')) {
-                feedback.innerHTML = '❌ E-mail inválido.';
-                feedback.className = 'feedback-error';
-                return;
-            }
-            if (!tecnologia) {
-                feedback.innerHTML = '⚠️ Selecione a tecnologia de interesse.';
-                feedback.className = 'feedback-error';
-                return;
-            }
-            if (mensagem.length < 10) {
-                feedback.innerHTML = '❌ A mensagem deve ter pelo menos 10 caracteres.';
-                feedback.className = 'feedback-error';
-                return;
-            }
-
-            enviando = true;
-            const originalText = submitBtn.innerHTML;
-            submitBtn.innerHTML = 'Enviando... <i class="fas fa-spinner fa-pulse"></i>';
-            submitBtn.disabled = true;
-
-            try {
-                const formData = new FormData();
-                formData.append('nome', escapeHtml(nome));
-                formData.append('email', email);
-                formData.append('empresa', escapeHtml(empresa));
-                formData.append('tecnologia', tecnologia);
-                formData.append('mensagem', escapeHtml(mensagem));
-
-                // Ajuste o caminho do script PHP conforme necessário
-                const response = await fetch('enviar.php', {
-                    method: 'POST',
-                    body: formData
-                });
-
-                const result = await response.json();
-
-                if (result.success) {
-                    feedback.innerHTML = `✅ ${result.message}`;
-                    feedback.className = 'feedback-success';
-                    form.reset();
-                    setTimeout(() => {
-                        feedback.innerHTML = '';
-                        feedback.className = '';
-                    }, 5000);
-                } else {
-                    feedback.innerHTML = `❌ ${result.message}`;
-                    feedback.className = 'feedback-error';
+        // Scroll suave para os links internos
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href === "#" || href === "") return;
+                const target = document.querySelector(href);
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
-            } catch (error) {
-                console.error('Erro:', error);
-                feedback.innerHTML = '❌ Erro de conexão. Tente novamente ou ligue para (11) 3800-9900.';
-                feedback.className = 'feedback-error';
-            } finally {
-                enviando = false;
-                submitBtn.innerHTML = originalText;
-                submitBtn.disabled = false;
-            }
+            });
         });
     })();
-
-    // Scroll suave para links internos
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            const href = this.getAttribute('href');
-            if (href === "#" || href === "") return;
-            const target = document.querySelector(href);
-            if (target) {
-                e.preventDefault();
-                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
-        });
-    });
 </script>
 </body>
 </html>
