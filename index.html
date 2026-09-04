@@ -586,7 +586,7 @@
         </div>
     </section>
 
-    <!-- ===== CONTATO com Web3Forms ===== -->
+    <!-- ===== CONTATO com Web3Forms ===== 6b9f5b60-09cd-4529-8e8c-3cafffaecfc7 -->
     <div class="container" id="contato">
         <div class="contact-form-section">
             <div class="form-grid">
@@ -600,19 +600,21 @@
                         <i class="fab fa-whatsapp"></i>
                     </div>
                 </div>
-                <form id="contactForm" class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+               <form id="contactForm" class="contact-form" action="https://web3forms.com" method="POST">
                     <!-- Chave de acesso do Web3Forms -->
                     <input type="hidden" name="access_key" value="6b9f5b60-09cd-4529-8e8c-3cafffaecfc7">
                     <!-- Redirecionamento para a própria página com parâmetro de sucesso -->
-                    <input type="hidden" name="redirect" value="https://appstartmobi.com.br/#contato?success=true">
+                    <input type="hidden" name="redirect" value="https://appstartmobi.com.br">
                     
-                    <!-- Campo oculto para o Assunto Dinâmico -->
-                    <input type="hidden" name="subject" id="email_subject" value="Nova Lead - Start Mobile">
+                    <!-- CAMPO OCULTO QUE MUDA O ASSUNTO DO E-MAIL -->
+                    <input type="hidden" name="subject" id="email_subject" value="Novo contato do site">
 
-                    <!-- Alterado de name="nome" para name="name" (Requisito do Web3Forms) -->
-                    <input type="text" name="name" id="user_name" id="user_email" placeholder="Nome completo" required>
+                    <!-- ADICIONADO O ID "user_name" -->
+                    <input type="text" name="name" id="user_name" placeholder="Nome completo" required>
                     
-                    <input type="email" name="email" placeholder="E-mail corporativo" required>
+                    <!-- ADICIONADO O ID "user_email" -->
+                    <input type="email" name="email" id="user_email" placeholder="E-mail corporativo" required>
+                    
                     <input type="text" name="empresa" placeholder="Empresa / Setor">
                     
                     <select name="tecnologia" required>
@@ -626,24 +628,37 @@
                     
                     <textarea name="mensagem" rows="4" placeholder="Descreva sua necessidade: módulos do ERP, funcionalidades do app, tipo de NFC, fluxo da clínica..." required></textarea>
 
-                    <!-- Botão com azul claro e espaçamento -->
                     <button type="submit" style="background-color: #60a5fa; border: none; cursor: pointer; margin-top: 1.5rem;">
                         Enviar mensagem <i class="fas fa-paper-plane"></i>
                     </button>
                 </form>
 
-                <!-- Script para injetar o Nome do cliente no Assunto antes do envio -->
+                <!-- SCRIPT QUE COMBINA NOME E E-MAIL NO ASSUNTO -->
                 <script>
-                document.getElementById('user_name').addEventListener('input', function() {
-                    const nome = this.value;
-                    const subjectInput = document.getElementById('email_subject');
-                    if (nome) {
-                        subjectInput.value = "Nova Lead: " + nome + " - Start Mobile";
+                const nomeInput = document.getElementById('user_name');
+                const emailInput = document.getElementById('user_email');
+                const subjectInput = document.getElementById('email_subject');
+
+                function atualizarAssunto() {
+                    const nome = nomeInput.value.trim();
+                    const email = emailInput.value.trim();
+
+                    if (nome && email) {
+                        subjectInput.value = nome + " - " + email;
+                    } else if (nome) {
+                        subjectInput.value = nome;
+                    } else if (email) {
+                        subjectInput.value = email;
                     } else {
-                        subjectInput.value = "Nova Lead - Start Mobile";
+                        subjectInput.value = "Novo contato do site";
                     }
-                });
+                }
+
+                // Ouve a digitação em ambos os campos
+                nomeInput.addEventListener('input', atualizarAssunto);
+                emailInput.addEventListener('input', atualizarAssunto);
                 </script>
+
 
 
 
