@@ -600,68 +600,60 @@
                         <i class="fab fa-whatsapp"></i>
                     </div>
                 </div>
-            <form id="contactForm" class="contact-form" action="https://web3forms.com" method="POST">
-                <!-- Chave de acesso do Web3Forms -->
-                <input type="hidden" name="access_key" value="6b9f5b60-09cd-4529-8e8c-3cafffaecfc7">
-                <!-- Redirecionamento para a própria página com parâmetro de sucesso -->
-                <input type="hidden" name="redirect" value="https://appstartmobi.com.br">
-                
-                <!-- CAMPO OCULTO DO ASSUNTO -->
-                <input type="hidden" name="subject" id="email_subject" value="Novo contato do site">
+                <form id="contactForm" class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+                    <!-- Chave de acesso do Web3Forms -->
+                    <input type="hidden" name="access_key" value="6b9f5b60-09cd-4529-8e8c-3cafffaecfc7">
+                    <!-- Redirecionamento para a própria página com parâmetro de sucesso -->
+                    <input type="hidden" name="redirect" value="https://appstartmobi.com.br/#contato?success=true">
+                    
+                    <!-- Campo oculto para o Assunto Dinâmico -->
+                    <input type="hidden" name="subject" id="email_subject" value="Nova Lead - Start Mobile">
 
-                <!-- INPUT DE NOME COM ID CORRETO -->
-                <input type="text" name="name" id="user_name" placeholder="Nome completo" required>
-                
-                <!-- INPUT DE E-MAIL COM ID CORRETO -->
-                <input type="email" name="email" id="user_email" placeholder="E-mail corporativo" required>
-                
-                <input type="text" name="empresa" placeholder="Empresa / Setor">
-                
-                <select name="tecnologia" required>
-                    <option value="">Tecnologia de interesse</option>
-                    <option value="erp">ERP (NF-e, pedidos, financeiro, estoque)</option>
-                    <option value="app_hibrido">App híbrido (Android/iOS)</option>
-                    <option value="nfc">Leitura NFC (tags, rastreamento)</option>
-                    <option value="clinica">Sistema de chamada para clínicas</option>
-                    <option value="outro">Outro / Consultoria</option>
-                </select>
-                
-                <textarea name="mensagem" rows="4" placeholder="Descreva sua necessidade: módulos do ERP, funcionalidades do app, tipo de NFC, fluxo da clínica..." required></textarea>
+                    <!-- Alterado de name="nome" para name="name" (Requisito do Web3Forms) -->
+                    <input type="text" name="name" id="user_name" id="user_email" placeholder="Nome completo" required>
+                    
+                     <!-- INPUT DE E-MAIL COM ID CORRETO -->
+                    <input type="email" name="email" id="user_email" placeholder="E-mail corporativo" required>
+    
+                    <input type="text" name="empresa" placeholder="Empresa / Setor">
+                    
+                    <select name="tecnologia" required>
+                        <option value="">Tecnologia de interesse</option>
+                        <option value="erp">ERP (NF-e, pedidos, financeiro, estoque)</option>
+                        <option value="app_hibrido">App híbrido (Android/iOS)</option>
+                        <option value="nfc">Leitura NFC (tags, rastreamento)</option>
+                        <option value="clinica">Sistema de chamada para clínicas</option>
+                        <option value="outro">Outro / Consultoria</option>
+                    </select>
+                    
+                    <textarea name="mensagem" rows="4" placeholder="Descreva sua necessidade: módulos do ERP, funcionalidades do app, tipo de NFC, fluxo da clínica..." required></textarea>
 
-                <button type="submit" style="background-color: #60a5fa; border: none; cursor: pointer; margin-top: 1.5rem;">
-                    Enviar mensagem <i class="fas fa-paper-plane"></i>
-                </button>
-            </form>
+                    <!-- Botão com azul claro e espaçamento -->
+                    <button type="submit" style="background-color: #60a5fa; border: none; cursor: pointer; margin-top: 1.5rem;">
+                        Enviar mensagem <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
 
-            <!-- SCRIPT OTIMIZADO PARA EVITAR CONFLITOS NO REDIRECIONAMENTO -->
-            <script>
-            (function() {
-                const nomeInput = document.getElementById('user_name');
-                const emailInput = document.getElementById('user_email');
-                const subjectInput = document.getElementById('email_subject');
+                <!-- Script para injetar o Nome do cliente no Assunto antes do envio -->
+                <script>
+               // O .forEach vai passar por cada um dos campos da lista e aplicar o evento
+                    document.querySelectorAll('#user_name, #user_email').forEach(campo => {
+                        campo.addEventListener('input', function() {
+                            
+                            // Aqui dentro você coloca o código que junta o nome e o e-mail
+                            const nome = document.getElementById('user_name').value.trim();
+                            const email = document.getElementById('user_email').value.trim();
+                            const subjectInput = document.getElementById('email_subject');
 
-                if (!nomeInput || !emailInput || !subjectInput) return;
+                            if (nome && email) {
+                                subjectInput.value = nome + " - " + email;
+                            } else {
+                                subjectInput.value = nome || email || "Novo contato do site";
+                            }
 
-                function combinarAssunto() {
-                    const nome = nomeInput.value.trim();
-                    const email = emailInput.value.trim();
-
-                    if (nome && email) {
-                        subjectInput.value = nome + " - " + email;
-                    } else if (nome) {
-                        subjectInput.value = nome;
-                    } else if (email) {
-                        subjectInput.value = email;
-                    } else {
-                        subjectInput.value = "Novo contato do site";
-                    }
-                }
-
-                nomeInput.addEventListener('input', combinarAssunto);
-                emailInput.addEventListener('input', combinarAssunto);
-            })();
-            </script>
-
+                        });
+                    });
+                </script>
 
 
                 <p id="formFeedback" style="font-size:0.85rem; margin-top: 8px; color: #D4F1E9; text-align: center;"></p>
